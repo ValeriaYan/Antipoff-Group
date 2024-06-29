@@ -1,8 +1,8 @@
-import { Form } from './Form'
+import { RegisterForm } from '../forms/RegisterForm'
 import { useNavigate } from 'react-router'
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
-import { setUser } from '../store/slices/userSlice';
-import { useAppDispatch } from '../hooks/redux-hooks';
+import { setUser } from '../../store/slices/userSlice';
+import { useAppDispatch } from '../../hooks/redux-hooks';
 
 const SignUp = () => {
     const dispatch = useAppDispatch();
@@ -23,8 +23,8 @@ const SignUp = () => {
     }
 
     return  (
-        <Form
-            title='register'
+        <RegisterForm
+            title='Register'
             handleClick={handleRegister}
         />
     )
