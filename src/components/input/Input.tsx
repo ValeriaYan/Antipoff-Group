@@ -4,10 +4,11 @@ interface InputProps {
     label: string,
     type: string,
     value: string,
-    onChange: (e :string) => void, 
+    changeHandler: (e: string) => void, 
+    blurHandler: () => void
 }
 
-const Input: FC<InputProps> = ({label, type, value, onChange}) => {
+const Input: FC<InputProps> = ({label, type, value, changeHandler, blurHandler}) => {
     return (
         <label>
             {label}
@@ -15,7 +16,8 @@ const Input: FC<InputProps> = ({label, type, value, onChange}) => {
                 name={label}
                 type={type}
                 value={value}
-                onChange={e => onChange(e.target.value)} />
+                onChange={e => changeHandler(e.target.value)} 
+                onBlur={() => blurHandler()}/>
         </label>
     );
 }

@@ -3,10 +3,14 @@ import { useNavigate } from 'react-router'
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { setUser } from '../../store/slices/userSlice';
 import { useAppDispatch } from '../../hooks/redux-hooks';
+import { FirebaseError } from 'firebase/app';
+import { useState } from 'react';
+import { ERRORS } from './serverErrors';
 
 const SignUp = () => {
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
+    const [error, setError] = useState('')
 
     const handleRegister = (email: string, password: string) => {
         const auth = getAuth();
@@ -19,13 +23,17 @@ const SignUp = () => {
                 }));
                 navigate('/')
             })
-            .catch(console.error)
+            .catch((error: FirebaseError) => {
+                console.log(error)
+                setError(ERRORS[error.code]);
+            })
     }
 
     return  (
         <RegisterForm
             title='Register'
             handleClick={handleRegister}
+            error={error}
         />
     )
 }
