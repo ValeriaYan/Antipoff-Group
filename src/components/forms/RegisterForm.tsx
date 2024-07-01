@@ -23,37 +23,49 @@ const RegisterForm: FC<AuthFormProps> = ({title, handleClick, error}) => {
     }
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form className='auth__form form' onSubmit={handleSubmit}>
             <Input 
+                className='form__input input'
                 label='Name' 
                 type="text" 
                 value={registerData.name} 
                 changeHandler={name => setRegisterData({...registerData, name})}
                 blurHandler={() => setDirtyFields({...dirtyFields, name: true})}/>
-            {(dirtyFields.name && nameValid.isEmpty) && <div>Name cannot be empty</div>}
+
+            <div className='form__error error'>{(dirtyFields.name && nameValid.isEmpty) && 'Name cannot be empty'}</div>
+
             <Input 
+                className='form__input input'
                 label='Email' 
                 type="email" 
                 value={registerData.email} 
                 changeHandler={email => setRegisterData({...registerData, email})}
                 blurHandler={() => setDirtyFields({...dirtyFields, email: true})}/>
-            {(dirtyFields.email && emailValid.emailError) && <div>Incorrect Email</div>}
+
+            <div className='form__error error'>{(dirtyFields.email && emailValid.emailError) && 'Incorrect Email'}</div>
+
             <Input 
+                className='form__input input'
                 label='Password' 
                 type="password" 
                 value={registerData.pass} 
                 changeHandler={pass => setRegisterData({...registerData, pass})}
                 blurHandler={() => setDirtyFields({...dirtyFields, pass: true})}/>
-            {(dirtyFields.pass && passValid.minLengthError) && <div>Password must contain {'>'} 6 characters</div>}
+
+            <div className='form__error error'>{(dirtyFields.pass && passValid.minLengthError) && 'Password must contain > 6 characters'}</div>
+
             <Input 
+                className='form__input input'
                 label='Repeat password' 
                 type="password" 
                 value={registerData.repeatPass} 
                 changeHandler={repeatPass => setRegisterData({...registerData, repeatPass})}
                 blurHandler={() => setDirtyFields({...dirtyFields, repeatPass: true})}/>
-            {(registerData.repeatPass !== registerData.pass) && <div>Passwords are not equal</div>}
-            <div>{error}</div>
-            <button>{title}</button>
+
+            <div className='form__error error'> {(registerData.repeatPass !== registerData.pass) && 'Passwords are not equal'}</div>
+
+            <button className='form__btn btn'>{title}</button>
+            <div className='form__error error' >{error}</div>
         </form>
     )
 }

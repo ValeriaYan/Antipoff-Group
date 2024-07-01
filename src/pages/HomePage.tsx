@@ -12,7 +12,7 @@ const HomePage = () => {
     console.log(isAuth)
     useEffect(() => {
         if(!isAuth) {
-            navigate('/login')
+            navigate('/auth')
         }
     })
 

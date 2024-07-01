@@ -17,23 +17,29 @@ const LoginForm: FC<AuthFormProps> = ({title, handleClick, error}) => {
     }
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form className='auth__form form' onSubmit={handleSubmit}>
             <Input 
+                className='form__input input'
                 label='Email' 
                 type="email" 
                 value={email} 
                 changeHandler={email => setEmail(email)}
                 blurHandler={() => setDirtyFields({...dirtyFields, email: true})}/>
-            {(dirtyFields.email && emailValid.isEmpty) && <div>Field cannot be empty</div>}
+
+            <div className='form__error error'>{(dirtyFields.email && emailValid.isEmpty) && 'Field cannot be empty'}</div>
+
             <Input 
+                className='form__input input'
                 label='Password' 
                 type="password" 
                 value={pass} 
                 changeHandler={pass => setPass(pass)}
                 blurHandler={() => setDirtyFields({...dirtyFields, pass: true})}/>
-            {(dirtyFields.pass && passValid.isEmpty) && <div>Field cannot be empty</div>}
-            <button>{title}</button>
-            <div>{error}</div>
+
+            <div className='form__error error'>{(dirtyFields.pass && passValid.isEmpty) && 'Field cannot be empty'}</div>
+
+            <button className='form__btn btn'>{title}</button>
+            <div className='form__error error'>{error}</div>
         </form>
     )
 }

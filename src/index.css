@@ -1,0 +1,38 @@
+:root {  
+    --color-accent: #97ce4c;
+    --color-error: #FB6467;
+    --color-background-light: #e0e0e0;
+}
+
+body {
+    font-family: 'Poppins', 'sans-serif';
+    font-weight: 400;
+    padding: 0;
+    margin: 0;
+}
+
+#root {
+    padding: 0;
+    margin: 0;
+}
+
+.container {
+    max-width: 1290px;
+    padding: 0 20px;
+    margin: 0 auto;
+}
+
+.wrapper {
+    width: 100vw;
+    height: 100vh;
+}
+
+p {
+    padding: 0;
+    margin: 0;
+}
+
+a {
+    color: var(--color-accent);
+    font-weight: 600;
+}

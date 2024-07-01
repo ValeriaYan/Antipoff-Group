@@ -1,6 +1,7 @@
 import { FC } from "react";
 
 interface InputProps {
+    className: string,
     label: string,
     type: string,
     value: string,
@@ -8,9 +9,9 @@ interface InputProps {
     blurHandler: () => void
 }
 
-const Input: FC<InputProps> = ({label, type, value, changeHandler, blurHandler}) => {
+const Input: FC<InputProps> = ({className, label, type, value, changeHandler, blurHandler}) => {
     return (
-        <label>
+        <label className={className}>
             {label}
             <input
                 name={label}
