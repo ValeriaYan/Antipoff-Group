@@ -13,7 +13,6 @@ const Card = (props: CardProps) => {
               <img src={props.card.image} alt="" />
             </div>
             <div className="card__name">{props.card.name}</div>
-            <div className="card__species">{props.card.species}</div>
           </div>
         </>
       );

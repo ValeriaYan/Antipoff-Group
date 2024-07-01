@@ -1,8 +1,6 @@
 import { Outlet } from 'react-router-dom';
-import React from 'react';
 
-class AuthLayout extends React.Component {
-  render(): React.ReactNode {
+const AuthLayout = () =>  {
     return (
       <div className='wrapper'>
         <main className="main main_auth">
@@ -12,7 +10,6 @@ class AuthLayout extends React.Component {
         </main>
       </div>
     );
-  }
 }
 
 export { AuthLayout };
