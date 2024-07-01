@@ -11,9 +11,11 @@ import {
     REGISTER, 
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
+import { charactersApi } from "../services/charactersService";
 
 const rootReducer = combineReducers({
     user: userReducer,
+    [charactersApi.reducerPath]: charactersApi.reducer,
 });
 
 const persistConfig = {
@@ -30,7 +32,7 @@ export const store = configureStore({
           serializableCheck: {
             ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
           },
-        }),
+        }).concat(charactersApi.middleware),
 })
 
 export const persistor = persistStore(store);
