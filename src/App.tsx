@@ -1,5 +1,6 @@
 import {Routes, Route} from 'react-router-dom';
 import HomePage from './pages/HomePage';
+import CharacterPage from './pages/CharacterPage';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import { AuthLayout } from './components/layouts/AuthLayout';
@@ -15,6 +16,7 @@ function App() {
         </Route>
         <Route path="/" element={<Layout />}>
           <Route path="" element={<HomePage />}/>
+          <Route path=":character/:id" element={<CharacterPage />}/>
         </Route>
       </Routes>
   );

@@ -13,5 +13,10 @@ export const charactersApi = createApi({
         },
       }),
     }),
+    fetchOneCharacter: builder.query<Card, string>({
+        query: (id: string) => ({
+          url: `/character/${id}`,
+        }),
+    }),
   }),
 });

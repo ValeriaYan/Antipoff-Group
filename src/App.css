@@ -148,15 +148,13 @@
 }
 
 .card-list {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
 
     padding: 60px 0;
 }
 
 .card {
-    flex: 0 0 30%;
     margin: 20px 10px;
 
     font-size: 24px;
@@ -170,6 +168,7 @@
     cursor: pointer;
 
     border: 1px solid transparent;
+    
 
     transition: all 0.2s ease;
 }
@@ -177,6 +176,9 @@
 .card:hover {
     background-color: var(--color-background-light);
     border: 1px solid var(--color-accent);
+    -webkit-box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.7);
+    -moz-box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.7);
+    box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.7);
 }
 
 .card__img {
