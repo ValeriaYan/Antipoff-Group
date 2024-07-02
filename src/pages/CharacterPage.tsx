@@ -16,7 +16,6 @@ const CharacterPage = () => {
     })
 
     const { data: character, error, isLoading } = charactersApi.useFetchOneCharacterQuery(characterId);
-    console.log(character)
     return (
         <div className='main__character character'>
             {isLoading && <div className="loading">Loading...</div>}

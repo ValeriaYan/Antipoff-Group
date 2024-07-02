@@ -34,7 +34,10 @@ const Layout = () => {
                             <div className='hero__title'>{character.name}</div>
                         )}
                         {location.pathname === '/' && (
+                            <>
+                            <div className='hero__title'>Find character</div>
                             <Search />
+                            </>
                         )}
                     </div>
                 </div>

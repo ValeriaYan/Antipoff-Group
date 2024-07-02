@@ -26,7 +26,6 @@ const Login = () => {
                 navigate('/')
             })
             .catch((error: FirebaseError) => {
-                console.log(error)
                 setError(ERRORS[error.code]);
             })
     }

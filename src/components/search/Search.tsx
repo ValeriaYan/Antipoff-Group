@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useAppSelector, useAppDispatch } from '../../hooks/redux-hooks';
 import { saveValue } from '../../store/slices/searchSlice';
+import Input from '../input/Input';
 
 const Search = () => {
   const savedValue = useAppSelector((state) => state.search.value);
@@ -12,25 +13,23 @@ const Search = () => {
     dispatch(saveValue(value));
   }
 
-  function onChange(event: React.ChangeEvent<HTMLInputElement>) {
-    setValue(event.target.value);
-  }
-
   return (
     <>
       <form className="search" onSubmit={onSubmit}>
-        <input
-          type="search"
-          onChange={onChange}
-          value={value}
-          placeholder="Find a character by name"
+        <Input 
+            className='search__input input'
+            label=''
+            type='search'
+            value={value}
+            changeHandler={(value) => setValue(value)}
+            blurHandler={() => null}
         />
-        <button type="submit">
+        <button className='search__btn btn' type="submit">
           <svg
             fill="#eeeeee"
-            width="20px"
-            height="20px"
-            viewBox="0 0 32 32"
+            width="25px"
+            height="25px"
+            viewBox="0 0 30 30"
             version="1.1"
             xmlns="http://www.w3.org/2000/svg"
           >

@@ -18,13 +18,13 @@ body {
 
 .container {
     max-width: 1290px;
-    padding: 0 20px;
     margin: 0 auto;
 }
 
 .wrapper {
     height: 100vh;
-    overflow-x: hidden;
+    /* overflow-x: hidden; */
+    padding: 0 20px;
 }
 
 p {

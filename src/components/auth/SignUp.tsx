@@ -24,7 +24,6 @@ const SignUp = () => {
                 navigate('/')
             })
             .catch((error: FirebaseError) => {
-                console.log(error)
                 setError(ERRORS[error.code]);
             })
     }
