@@ -19,7 +19,9 @@ const RegisterForm: FC<AuthFormProps> = ({title, handleClick, error}) => {
 
     const handleSubmit: FormEventHandler = (e: FormEvent<Element>) => {
         e.preventDefault();
-        handleClick(registerData.email, registerData.pass);
+        if(!nameValid.isEmpty && registerData.repeatPass === registerData.pass) {
+            handleClick(registerData.email, registerData.pass);
+        }
     }
 
     return (
