@@ -16,9 +16,9 @@ const Layout = () => {
             <div className='hero'>
                 <div className='hero__container container'>
                     <header className='header'>
-                        {location.pathname.indexOf('/character/') === 0 && <div className='header__back-btn btn'>Back</div>}
+                        {location.pathname.indexOf('/character/') === 0 && <div className='header__back-btn header__btn btn'>Back</div>}
                         <button
-                            className='header__logout-btn btn'
+                            className='header__logout-btn header__btn btn'
                             onClick={() => dispatch(removeUser())}>
                             Log out
                         </button>
