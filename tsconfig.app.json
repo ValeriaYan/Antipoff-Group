@@ -23,7 +23,7 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
     "noImplicitAny": true,
-    "types": ["node", "react/next", "react-dom/next"],
+    "types": ["node"],
   },
   "include": ["src", "src/firebase.ts"]
 }
