@@ -14,7 +14,7 @@ const root = createRoot(element!);
 
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
+    <BrowserRouter basename="/Antipoff-Group">
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
           <App />
