@@ -3,11 +3,13 @@ import { useAppDispatch } from '../../hooks/redux-hooks';
 import { removeUser } from '../../store/slices/userSlice';
 import { useCharacterId } from '../../hooks/use-character';
 import { charactersApi } from '../../services/charactersService';
+import { useNavigate } from 'react-router-dom';
 
 const Layout = () => {
     const dispatch = useAppDispatch();
     const location = useLocation();
     const characterId = useCharacterId();
+    const navigate = useNavigate();
 
     const { data: character, error, isLoading } = charactersApi.useFetchOneCharacterQuery(characterId);
  
@@ -16,7 +18,8 @@ const Layout = () => {
             <div className='hero'>
                 <div className='hero__container container'>
                     <header className='header'>
-                        {location.pathname.indexOf('/character/') === 0 && <div className='header__back-btn header__btn btn'>Back</div>}
+                        {location.pathname.indexOf('/character/') === 0 && 
+                        <div onClick={() => navigate(-1)} className='header__back-btn header__btn btn'>Back</div>}
                         <button
                             className='header__logout-btn header__btn btn'
                             onClick={() => dispatch(removeUser())}>

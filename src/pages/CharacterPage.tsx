@@ -1,8 +1,19 @@
+import { useNavigate } from "react-router-dom";
 import { useCharacterId } from "../hooks/use-character";
 import { charactersApi } from "../services/charactersService";
+import { useAuth } from "../hooks/use-auth";
+import { useEffect } from "react";
 
 const CharacterPage = () => {
     const characterId = useCharacterId();
+    const navigate = useNavigate();
+
+    const { isAuth } = useAuth();
+    useEffect(() => {
+        if(!isAuth) {
+            navigate('/auth')
+        }
+    })
 
     const { data: character, error, isLoading } = charactersApi.useFetchOneCharacterQuery(characterId);
     console.log(character)
@@ -12,14 +23,16 @@ const CharacterPage = () => {
             {error && <div className="home-error">There is nothing here</div>}
             {character && !error && (
                 <>
-                    <img src={character.image} alt="" />
-                    <div className='character__info'>
-                        <div className='character__status'>Status: {character.status}</div>
-                        <div className='character__species'>Species: {character.species}</div>
-                        <div className='character__gender'>Gender: {character.gender}</div>
-                        <div className='character__gender'>Origin: {character.origin.name}</div>
-                        <div className='character__gender'>Location: {character.location.name}</div>
+                    <div className='character__img'>
+                        <img src={character.image} alt="" />
                     </div>
+                    <ul className='character__info-list info-list'>
+                        <li className='info-list__item'>Status: <span>{character.status}</span></li>
+                        <li className='info-list__item'>Species: <span>{character.species}</span></li>
+                        <li className='info-list__item'>Gender: <span>{character.gender}</span></li>
+                        <li className='info-list__item'>Origin: <span>{character.origin.name}</span></li>
+                        <li className='info-list__item'>Location: <span>{character.location.name}</span></li>
+                    </ul>
                 </>
             )}
         </div>
