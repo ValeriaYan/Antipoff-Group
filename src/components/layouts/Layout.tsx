@@ -1,17 +1,18 @@
 import { Outlet, useLocation } from 'react-router-dom';
-import { useAppDispatch } from '../../hooks/redux-hooks';
+import { useAppDispatch, useAppSelector } from '../../hooks/redux-hooks';
 import { removeUser } from '../../store/slices/userSlice';
-import { useCharacterId } from '../../hooks/use-character';
 import { charactersApi } from '../../services/charactersService';
 import { useNavigate } from 'react-router-dom';
+import { Search } from '../search/Search';
 
 const Layout = () => {
     const dispatch = useAppDispatch();
     const location = useLocation();
-    const characterId = useCharacterId();
+    const characterId = useAppSelector((state) => state.character.id);
     const navigate = useNavigate();
 
     const { data: character, error, isLoading } = charactersApi.useFetchOneCharacterQuery(characterId);
+
  
     return (
         <div className='wrapper'>
@@ -31,6 +32,9 @@ const Layout = () => {
                         {error && <div className="home-error">There is nothing here</div>}
                         {character && !error && location.pathname.indexOf('/character/') === 0 &&(
                             <div className='hero__title'>{character.name}</div>
+                        )}
+                        {location.pathname === '/' && (
+                            <Search />
                         )}
                     </div>
                 </div>

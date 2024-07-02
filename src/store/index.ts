@@ -1,6 +1,7 @@
 import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import userReducer from './slices/userSlice';
 import characterReducer from './slices/characterSlice';
+import searchReducer from './slices/searchSlice';
 import { 
     persistStore, 
     persistReducer,
@@ -17,6 +18,7 @@ import { charactersApi } from "../services/charactersService";
 const rootReducer = combineReducers({
     user: userReducer,
     character: characterReducer,
+    search: searchReducer,
     [charactersApi.reducerPath]: charactersApi.reducer,
 });
 

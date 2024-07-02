@@ -3,10 +3,12 @@ import { useAuth } from '../hooks/use-auth';
 import { useEffect } from 'react';
 import { charactersApi } from '../services/charactersService';
 import CardsList from '../components/cards/CardsList';
+import { useAppSelector } from '../hooks/redux-hooks';
  
 const HomePage = () => {
     const navigate = useNavigate();
-    const { data: characters, error, isLoading } = charactersApi.useFetchAllCharactersQuery('');
+    const value = useAppSelector((state) => state.search.value);
+    const { data: characters, error, isLoading } = charactersApi.useFetchAllCharactersQuery(value);
 
     const { isAuth } = useAuth();
     useEffect(() => {

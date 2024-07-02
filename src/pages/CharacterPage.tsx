@@ -1,11 +1,11 @@
 import { useNavigate } from "react-router-dom";
-import { useCharacterId } from "../hooks/use-character";
 import { charactersApi } from "../services/charactersService";
 import { useAuth } from "../hooks/use-auth";
 import { useEffect } from "react";
+import { useAppSelector } from "../hooks/redux-hooks";
 
 const CharacterPage = () => {
-    const characterId = useCharacterId();
+    const characterId = useAppSelector((state) => state.character.id);
     const navigate = useNavigate();
 
     const { isAuth } = useAuth();
